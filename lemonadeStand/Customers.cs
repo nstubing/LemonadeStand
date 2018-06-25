@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace lemonadeStand
 {
-    class Program
+    class Customers
     {
-        static void Main(string[] args)
-        {
-            Game MyGame = new Game();
-        }
     }
 }
