@@ -17,8 +17,9 @@ namespace lemonadeStand
         public Game()
         {
             DisplayRules();
+            Console.Clear();
             lemonadeStandOne = new LemonadeStand();
-            store = new Store(lemonadeStandOne.inventory);
+            store = new Store(lemonadeStandOne.inventory, lemonadeStandOne.money);
 
         }
 

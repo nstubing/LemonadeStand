@@ -10,7 +10,7 @@ namespace lemonadeStand
     {
         //member variable
         public Inventory inventory;
-        public int money;
+        public double money;
         public int customerSatisfaction;
         public int popularity;
         // constructor
