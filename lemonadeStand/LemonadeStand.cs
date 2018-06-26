@@ -9,7 +9,8 @@ namespace lemonadeStand
     class LemonadeStand
     {
         //member variable
-        Inventory inventory;
+        public Inventory inventory;
+        public int money;
         public int customerSatisfaction;
         public int popularity;
         // constructor
@@ -17,7 +18,12 @@ namespace lemonadeStand
         public LemonadeStand()
         {
             customerSatisfaction = 50;
+            money = 20;
+            inventory = new Inventory();
+
+
         }
         //member methods
+     
     }
 }

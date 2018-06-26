@@ -10,9 +10,9 @@ namespace lemonadeStand
     {
         static void Main(string[] args)
         {
-            // Game MyGame = new Game();\
-            Store newStore = new Store();
-            newStore.DisplayStore();
+            Game MyGame = new Game();
+            //Store newStore = new Store(Inventory );
+            //newStore.DisplayStore(Inventory inventory);
         }
     }
 }

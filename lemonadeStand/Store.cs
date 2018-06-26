@@ -9,35 +9,65 @@ namespace lemonadeStand
     class Store
     {
         public int storeKeyCounter;
+        public int itemKeyCounter;
 
-        public Store()
+
+        public Store(Inventory inventory)
         {
-
         }
 
 
-        public void DisplayStore()
+        public void DisplayStore(Inventory inventory)
         {
             Console.WriteLine("Use up and down arrow to navigate, press enter to buy items!");
-            DisplayStoreHighlight(storeKeyCounter);
-            if ((storeKeyCounter>=0) && (storeKeyCounter<=5))
+            DisplayStoreHighlight(storeKeyCounter,inventory);
+            var keyPressed = Console.ReadKey().Key;
+            if (keyPressed==ConsoleKey.Enter)
             {
-                if (Console.ReadKey().Key == ConsoleKey.UpArrow)
+                if (storeKeyCounter==4)
+                {
+                    return;
+                }
+                else
+                {
+                    DisplayItemHighlight(storeKeyCounter, inventory);
+                }
+            }
+
+            if (storeKeyCounter==0)
+            {
+                if(keyPressed==ConsoleKey.DownArrow)
+                {
+                    storeKeyCounter += 1;
+                }
+            }
+            else if (storeKeyCounter==4)
+            {
+                if (keyPressed==ConsoleKey.UpArrow)
                 {
                     storeKeyCounter -= 1;
                 }
-                else if (Console.ReadKey().Key == ConsoleKey.DownArrow)
+            }
+            else if ((storeKeyCounter>0) && (storeKeyCounter<4))
+            {
+                if (keyPressed == ConsoleKey.UpArrow)
+                {
+                    storeKeyCounter -= 1;
+                }
+                else if (keyPressed == ConsoleKey.DownArrow)
                 {
                     storeKeyCounter += 1;
                 }
 
             }
-            DisplayStore();
+            Console.Clear();
+            DisplayStore(inventory);
 
 
         }
-        public void DisplayStoreHighlight(int keyCounter)
+        public void DisplayStoreHighlight(int keyCounter,Inventory inventory)
         {
+           Console.WriteLine("Cups: " + inventory.cups + "   Lemons: " + inventory.lemons + "   Sugar: " + inventory.sugar + " cups" + "   Ice: " + inventory.ice + " Cubes");
             switch(keyCounter)
             {
                 case 0:
@@ -86,6 +116,11 @@ namespace lemonadeStand
                     Console.ResetColor();
                     break;
             }
+
+        }
+
+        public void DisplayItemHighlight(int storeKeyCounter,Inventory inventory)
+        {
 
         }
     }

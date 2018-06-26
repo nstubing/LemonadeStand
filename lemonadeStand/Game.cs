@@ -10,6 +10,7 @@ namespace lemonadeStand
     {
         LemonadeStand lemonadeStandOne;
         Day day;
+        Store store;
         public int daysPlaying;
 
 
@@ -17,6 +18,8 @@ namespace lemonadeStand
         {
             DisplayRules();
             lemonadeStandOne = new LemonadeStand();
+            store = new Store(lemonadeStandOne.inventory);
+
         }
 
         private void DisplayRules()
