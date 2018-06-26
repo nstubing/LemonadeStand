@@ -407,7 +407,7 @@ namespace lemonadeStand
                             newMoney -= 1.63;
                             break;
                         case 2:
-                            newInventory.cups += 48;
+                            newInventory.sugar += 48;
                             newMoney -= 3.28;
                             break;
                     }
