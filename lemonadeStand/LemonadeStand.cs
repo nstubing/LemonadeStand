@@ -19,6 +19,5 @@ namespace lemonadeStand
             customerSatisfaction = 50;
         }
         //member methods
-        public void 
     }
 }

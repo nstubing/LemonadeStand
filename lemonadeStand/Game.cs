@@ -9,9 +9,7 @@ namespace lemonadeStand
     class Game
     {
         LemonadeStand lemonadeStandOne;
-        Weather weather;
         Day day;
-        Customers customers;
         public int daysPlaying;
 
 
@@ -28,6 +26,7 @@ namespace lemonadeStand
                 " At the end of the game, you'll see how much money you made, write it down and try to beat your score! Would you like to play 7,14, or 21 days? please type answer");
             daysPlaying = Int32.Parse(Console.ReadLine());
         }
+
 
 
 
