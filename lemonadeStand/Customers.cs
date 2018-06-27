@@ -8,9 +8,9 @@ namespace lemonadeStand
 {
     class Customers
     {
-        int chanceToBuy;
+        double chanceToBuy;
 
-        public Customers(int actualTemperature, string weatherCondition, int popularity, int price)
+        public Customers(int actualTemperature, string weatherCondition, int popularity, double price, int payingCustomers)
         {
             chanceToBuy = 10;
             ActualTemperatureInfluence(actualTemperature);
@@ -59,16 +59,22 @@ namespace lemonadeStand
             chanceToBuy += popularity;
 
         }
-        public void PriceInfluence(int price)
+        public void PriceInfluence(double price)
         {
-            if (price>=25)
+            if (price>=.25)
             {
-                chanceToBuy -= (price - 25);
+                double overPrice= (price - .25);
+                chanceToBuy -= (overPrice * 100);
             }
             else
             {
-                chanceToBuy += (25 - price) * 2;
+                double underPrice = (.25 - price) * 2;
+                chanceToBuy += (underPrice * 100);
             }
+        }
+        public virtual void DoesBuy()
+        {
+
         }
     }
 }

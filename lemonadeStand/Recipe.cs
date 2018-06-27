@@ -11,7 +11,7 @@ namespace lemonadeStand
         public int lemonsToUse=4;
         public int sugarToUse=4;
         public int iceToUse=4;
-        public double price=.25;
+        public double price=0.25;
 
         public Recipe()
         {

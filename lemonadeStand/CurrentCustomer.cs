@@ -9,12 +9,13 @@ namespace lemonadeStand
     class CurrentCustomer:Customers
     {
 
-        int chanceToBuy;
-        public CurrentCustomer(int actualTemperature, string weatherCondition, int popularity, int price)
+        double chanceToBuy;
+        public CurrentCustomer(int actualTemperature, string weatherCondition, int popularity, double price, int payingCustomers)
+            :base(actualTemperature,weatherCondition,popularity,price,payingCustomers)
         {
 
         }
-        public void DoesBuy()
+        public override void DoesBuy()
         {
             Random num = new Random();
             int buyNumber = num.Next(0, 101);

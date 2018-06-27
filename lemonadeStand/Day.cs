@@ -14,7 +14,7 @@ namespace lemonadeStand
         public int popularityChange;
         public int customerSatisfactionChange;
         Weather weather;
-        Customers customers;
+        CurrentCustomer currentCustomer;
 
 
         public Day(Inventory inventory, LemonadeStand lemonadestand, Store store)
@@ -27,10 +27,20 @@ namespace lemonadeStand
         {
             weather = new Weather();
             store.DisplayStore(inventory, lemonadeStand, weather);
+            lemonadeStand.SetRecipe();
+            GetPossibleCustomers();
+            for(int j=0; j<possibleCustomers;j++)
+            {
+                currentCustomer = new CurrentCustomer(weather.actualTemperature, weather.weatherCondition, lemonadeStand.popularity, lemonadeStand.recipe.price, payingCustomers);
+            }
+            Console.WriteLine(payingCustomers);
 
-            customers = new Customers();
 
-
+        }
+        public void GetPossibleCustomers()
+        {
+            Random rnd = new Random();
+            possibleCustomers = rnd.Next(85, 120);
         }
     }
 }

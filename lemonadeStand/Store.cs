@@ -20,6 +20,7 @@ namespace lemonadeStand
 
         public void DisplayStore(Inventory inventory, LemonadeStand lemonadeStand,Weather weather)
         {
+            Console.WriteLine("The forecast today is "+weather.forcastTemperature+" degrees and "+weather.weatherCondition+".");
             Console.WriteLine("Use up and down arrow to navigate, press enter to look at item prices!");
             DisplayStoreHighlight(storeKeyCounter, inventory, lemonadeStand);
             var keyPressed = Console.ReadKey().Key;
@@ -64,7 +65,7 @@ namespace lemonadeStand
 
             }
             Console.Clear();
-            DisplayStore(inventory,lemonadeStand);
+            DisplayStore(inventory,lemonadeStand,weather);
 
 
         }
