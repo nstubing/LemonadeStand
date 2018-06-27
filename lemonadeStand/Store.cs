@@ -18,11 +18,12 @@ namespace lemonadeStand
         {
             this.newInventory = inventory;
             this.newMoney = money;
-            DisplayStore(newInventory);
+            DisplayStore(newInventory,newMoney);
+            //LemonadeStand.money = newMoney;
         }
 
 
-        public void DisplayStore(Inventory newInventory)
+        public void DisplayStore(Inventory newInventory,double newMoney)
         {
             Console.WriteLine("Use up and down arrow to navigate, press enter to look at item prices!");
             DisplayStoreHighlight(storeKeyCounter,newInventory);
@@ -31,6 +32,7 @@ namespace lemonadeStand
             {
                 if (storeKeyCounter==4)
                 {
+                    Console.Clear();
                     return;
                 }
                 else
@@ -67,7 +69,7 @@ namespace lemonadeStand
 
             }
             Console.Clear();
-            DisplayStore(newInventory);
+            DisplayStore(newInventory,newMoney);
 
 
         }

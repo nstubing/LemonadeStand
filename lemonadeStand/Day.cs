@@ -9,12 +9,17 @@ namespace lemonadeStand
     class Day
     {
         public int lemonadeBought;
-        public int dailyCustomers;
+        public int possibleCustomers;
+        public int payingCustomers;
         public int popularityChange;
         public int customerSatisfactionChange;
+        Weather weather;
+        Customers customers;
 
-        public Day()
+
+        public Day(Inventory inventory,double money)
         {
+            Store store = new Store(inventory, money);
 
         }
     }

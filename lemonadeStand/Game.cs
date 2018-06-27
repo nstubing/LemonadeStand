@@ -19,8 +19,7 @@ namespace lemonadeStand
             DisplayRules();
             Console.Clear();
             lemonadeStandOne = new LemonadeStand();
-            store = new Store(lemonadeStandOne.inventory, lemonadeStandOne.money);
-
+            RunGameDays(lemonadeStandOne.inventory, lemonadeStandOne.money);
         }
 
         private void DisplayRules()
@@ -29,6 +28,14 @@ namespace lemonadeStand
                 "  Start with the basic recipe, but try to vary the recipe and see if you can do better!  Lastly, set your price and sell your lemonade at the stand. try changing up the price based on the weather conditions as well." + Environment.NewLine+
                 " At the end of the game, you'll see how much money you made, write it down and try to beat your score! Would you like to play 7,14, or 21 days? please type answer");
             daysPlaying = Int32.Parse(Console.ReadLine());
+        }
+        private void RunGameDays(Inventory inventory, double money)
+        {
+            for(int i = 1; i <= daysPlaying; i++)
+            {
+                day = new Day(inventory,money);
+            }
+
         }
 
 
