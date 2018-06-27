@@ -10,13 +10,14 @@ namespace lemonadeStand
     {
         double chanceToBuy;
 
-        public Customers(int actualTemperature, string weatherCondition, int popularity, double price, int payingCustomers)
+        public Customers(int actualTemperature, string weatherCondition, int popularity, double price, Day day)
         {
             chanceToBuy = 10;
             ActualTemperatureInfluence(actualTemperature);
             WeatherConditionInfluence(weatherCondition);
             PopularityInfluence(popularity);
             PriceInfluence(price);
+            DoesBuy(day);
 
         }
 
@@ -72,9 +73,14 @@ namespace lemonadeStand
                 chanceToBuy += (underPrice * 100);
             }
         }
-        public virtual void DoesBuy()
+        public void DoesBuy(Day day)
         {
-
+            Random num = new Random();
+            int buyNumber = num.Next(0, 101);
+            if (buyNumber < chanceToBuy)
+            {
+                day.payingCustomers += 1;
+            }
         }
     }
 }

@@ -28,7 +28,7 @@ namespace lemonadeStand
         public void GetWeatherCondition()
         {
             Random rnd = new Random();
-            int numberCondition = rnd.Next(1, 7);
+            int numberCondition = rnd.Next(0, 4);
             switch(numberCondition)
             {
                 case 0:
