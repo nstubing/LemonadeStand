@@ -6,7 +6,24 @@ using System.Threading.Tasks;
 
 namespace lemonadeStand
 {
-    class CurrentCustomer
+    class CurrentCustomer:Customers
     {
+
+        int chanceToBuy;
+        public CurrentCustomer(int actualTemperature, string weatherCondition, int popularity, int price)
+        {
+
+        }
+        public void DoesBuy()
+        {
+            Random num = new Random();
+            int buyNumber = num.Next(0, 101);
+            if (buyNumber<chanceToBuy)
+            {
+                
+            }
+            
+
+        }
     }
 }

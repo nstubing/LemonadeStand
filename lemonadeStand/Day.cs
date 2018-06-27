@@ -17,9 +17,19 @@ namespace lemonadeStand
         Customers customers;
 
 
-        public Day(Inventory inventory,double money)
+        public Day(Inventory inventory, LemonadeStand lemonadestand, Store store)
         {
-            Store store = new Store(inventory, money);
+            RunDay(inventory, lemonadestand, store);
+
+        }
+
+        public void RunDay(Inventory inventory, LemonadeStand lemonadeStand, Store store)
+        {
+            weather = new Weather();
+            store.DisplayStore(inventory, lemonadeStand, weather);
+
+            customers = new Customers();
+
 
         }
     }
