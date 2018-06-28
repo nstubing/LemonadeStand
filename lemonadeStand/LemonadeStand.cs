@@ -11,8 +11,8 @@ namespace lemonadeStand
         //member variable
         public Inventory inventory;
         public double money;
-        public int customerSatisfaction;
-        public int popularity;
+        public double customerSatisfaction;
+        public double popularity;
         public Recipe recipe;
         // constructor
 

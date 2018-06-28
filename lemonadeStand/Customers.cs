@@ -11,7 +11,7 @@ namespace lemonadeStand
         double chanceToBuy;
 
 
-        public Customers(int actualTemperature, string weatherCondition, LemonadeStand lemonadeStand, Day day)
+        public Customers(double actualTemperature, string weatherCondition, LemonadeStand lemonadeStand, Day day)
         {
             chanceToBuy = 10;
             ActualTemperatureInfluence(actualTemperature);
@@ -23,7 +23,7 @@ namespace lemonadeStand
 
         }
 
-        public void ActualTemperatureInfluence(int temperature)
+        public void ActualTemperatureInfluence(double temperature)
         {
             if (temperature>=70)
             {
@@ -57,7 +57,7 @@ namespace lemonadeStand
 
             }
         }
-        public void PopularityInfluence(int popularity)
+        public void PopularityInfluence(double popularity)
         {
             chanceToBuy += popularity;
 
@@ -83,9 +83,9 @@ namespace lemonadeStand
 
 
         }
-        public int LemonInfluence(int lemons)
+        public double LemonInfluence(double lemons)
         {
-            int influence;
+            double influence;
             if (lemons < 8)
             {
                 influence=(lemons - 4) * 2;
@@ -97,9 +97,9 @@ namespace lemonadeStand
                 
             return influence;
         }
-        public int SugarInfluence(int sugar)
+        public double SugarInfluence(double sugar)
         {
-            int influence;
+            double influence;
             if (sugar > 4)
             {
                 influence=(4-sugar);
@@ -110,9 +110,9 @@ namespace lemonadeStand
             }
             return influence;
         }
-        public int IceInfluence(int ice)
+        public double IceInfluence(double ice)
         {
-            int influence;
+            double influence;
             if (ice<6)
             {
                 influence = (ice - 4) * 2;
@@ -128,7 +128,7 @@ namespace lemonadeStand
         public void DoesBuy(Day day)
         {
             Random num = new Random();
-            int buyNumber = num.Next(0, 101);
+            double buyNumber = num.Next(0, 101);
             if (buyNumber < chanceToBuy)
             {
                 day.payingCustomers += 1;

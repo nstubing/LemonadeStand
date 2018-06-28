@@ -8,25 +8,25 @@ namespace lemonadeStand
 {
     class Store
     {
-        public int storeKeyCounter;
-        public int itemKeyCounter;
+        public double storeKeyCounter;
+        public double itemKeyCounter;
 
-       
+
         public Store()
         {
 
         }
 
 
-        public void DisplayStore(Inventory inventory, LemonadeStand lemonadeStand,Weather weather)
+        public void DisplayStore(Inventory inventory, LemonadeStand lemonadeStand, Weather weather, double currentDay)
         {
-            Console.WriteLine("The forecast today is "+weather.forcastTemperature+" degrees and "+weather.weatherCondition+".");
+            Console.WriteLine("The forecast Day " + currentDay + " is " + weather.forcastTemperature + " degrees and " + weather.weatherCondition + ".");
             Console.WriteLine("Use up and down arrow to navigate, press enter to look at item prices!");
             DisplayStoreHighlight(storeKeyCounter, inventory, lemonadeStand);
             var keyPressed = Console.ReadKey().Key;
-            if (keyPressed==ConsoleKey.Enter)
+            if (keyPressed == ConsoleKey.Enter)
             {
-                if (storeKeyCounter==4)
+                if (storeKeyCounter == 4)
                 {
                     Console.Clear();
                     return;
@@ -34,25 +34,25 @@ namespace lemonadeStand
                 else
                 {
                     Console.Clear();
-                    DisplayItem(storeKeyCounter,itemKeyCounter,inventory,lemonadeStand);
+                    DisplayItem(storeKeyCounter, itemKeyCounter, inventory, lemonadeStand);
                 }
             }
 
-            if (storeKeyCounter==0)
+            if (storeKeyCounter == 0)
             {
-                if(keyPressed==ConsoleKey.DownArrow)
+                if (keyPressed == ConsoleKey.DownArrow)
                 {
                     storeKeyCounter += 1;
                 }
             }
-            else if (storeKeyCounter==4)
+            else if (storeKeyCounter == 4)
             {
-                if (keyPressed==ConsoleKey.UpArrow)
+                if (keyPressed == ConsoleKey.UpArrow)
                 {
                     storeKeyCounter -= 1;
                 }
             }
-            else if ((storeKeyCounter>0) && (storeKeyCounter<4))
+            else if ((storeKeyCounter > 0) && (storeKeyCounter < 4))
             {
                 if (keyPressed == ConsoleKey.UpArrow)
                 {
@@ -65,14 +65,14 @@ namespace lemonadeStand
 
             }
             Console.Clear();
-            DisplayStore(inventory,lemonadeStand,weather);
+            DisplayStore(inventory, lemonadeStand, weather, currentDay);
 
 
         }
-        public void DisplayStoreHighlight(int keyCounter,Inventory inventory, LemonadeStand lemonadeStand)
+        public void DisplayStoreHighlight(double keyCounter, Inventory inventory, LemonadeStand lemonadeStand)
         {
-           Console.WriteLine("Cups: " + inventory.cups + "   Lemons: " + inventory.lemons + "   Sugar: " + inventory.sugar + " cups" + "   Ice: " + inventory.ice + " Cubes"+"   Money:$"+lemonadeStand.money);
-            switch(keyCounter)
+            Console.WriteLine("Cups: " + inventory.cups + "   Lemons: " + inventory.lemons + "   Sugar: " + inventory.sugar + " cups" + "   Ice: " + inventory.ice + " Cubes" + "   Money:$" + lemonadeStand.money);
+            switch (keyCounter)
             {
                 case 0:
                     Console.BackgroundColor = ConsoleColor.Red;
@@ -124,22 +124,22 @@ namespace lemonadeStand
         }
 
 
-        public void DisplayItem(int storeKeyCounter, int itemKeyCounter, Inventory inventory, LemonadeStand lemonadeStand)
+        public void DisplayItem(double storeKeyCounter, double itemKeyCounter, Inventory inventory, LemonadeStand lemonadeStand)
         {
             Console.WriteLine("Use up and down arrow to navigate, press enter to buy items!");
             switch (storeKeyCounter)
             {
                 case 0:
-                    DisplayCup(inventory,itemKeyCounter,lemonadeStand);
+                    DisplayCup(inventory, itemKeyCounter, lemonadeStand);
                     break;
                 case 1:
-                    DisplayLemons(inventory,itemKeyCounter,lemonadeStand);
+                    DisplayLemons(inventory, itemKeyCounter, lemonadeStand);
                     break;
                 case 2:
-                    DisplaySugar(inventory,itemKeyCounter,lemonadeStand);
+                    DisplaySugar(inventory, itemKeyCounter, lemonadeStand);
                     break;
                 case 3:
-                    DisplayIce(inventory,itemKeyCounter,lemonadeStand);
+                    DisplayIce(inventory, itemKeyCounter, lemonadeStand);
                     break;
             }
 
@@ -152,8 +152,8 @@ namespace lemonadeStand
                 }
                 else
                 {
-                    UpdateInventory(storeKeyCounter, itemKeyCounter,inventory, lemonadeStand);
-               }
+                    UpdateInventory(storeKeyCounter, itemKeyCounter, inventory, lemonadeStand);
+                }
             }
 
             if (itemKeyCounter == 0)
@@ -186,7 +186,7 @@ namespace lemonadeStand
             DisplayItem(storeKeyCounter, itemKeyCounter, inventory, lemonadeStand);
 
         }
-        public void DisplayCup(Inventory inventory, int itemKeyCounter, LemonadeStand lemonadeStand)
+        public void DisplayCup(Inventory inventory, double itemKeyCounter, LemonadeStand lemonadeStand)
         {
             Console.WriteLine("Cups: " + inventory.cups + "   Lemons: " + inventory.lemons + "   Sugar: " + inventory.sugar + " cups" + "   Ice: " + inventory.ice + " Cubes" + "   Money:$" + lemonadeStand.money);
             switch (itemKeyCounter)
@@ -231,7 +231,7 @@ namespace lemonadeStand
 
         }
 
-        public void DisplayLemons(Inventory inventory, int itemKeyCounter, LemonadeStand lemonadeStand)
+        public void DisplayLemons(Inventory inventory, double itemKeyCounter, LemonadeStand lemonadeStand)
         {
 
             Console.WriteLine("Cups: " + inventory.cups + "   Lemons: " + inventory.lemons + "   Sugar: " + inventory.sugar + " cups" + "   Ice: " + inventory.ice + " Cubes" + "   Money:$" + lemonadeStand.money);
@@ -272,7 +272,7 @@ namespace lemonadeStand
 
             }
         }
-        public void DisplaySugar(Inventory inventory, int itemKeyCounter, LemonadeStand lemonadeStand)
+        public void DisplaySugar(Inventory inventory, double itemKeyCounter, LemonadeStand lemonadeStand)
         {
 
             Console.WriteLine("Cups: " + inventory.cups + "   Lemons: " + inventory.lemons + "   Sugar: " + inventory.sugar + " cups" + "   Ice: " + inventory.ice + " Cubes" + "   Money:$" + lemonadeStand.money);
@@ -313,7 +313,7 @@ namespace lemonadeStand
 
             }
         }
-        public void DisplayIce(Inventory inventory, int itemKeyCounter, LemonadeStand lemonadeStand)
+        public void DisplayIce(Inventory inventory, double itemKeyCounter, LemonadeStand lemonadeStand)
         {
 
             Console.WriteLine("Cups: " + inventory.cups + "   Lemons: " + inventory.lemons + "   Sugar: " + inventory.sugar + " cups" + "   Ice: " + inventory.ice + " Cubes" + "   Money:$" + lemonadeStand.money);
@@ -355,15 +355,15 @@ namespace lemonadeStand
             }
         }
 
-        public void UpdateInventory(int storeKeyCounter, int itemKeyCounter,Inventory inventory, LemonadeStand lemonadeStand)
+        public void UpdateInventory(double storeKeyCounter, double itemKeyCounter, Inventory inventory, LemonadeStand lemonadeStand)
         {
-            switch(storeKeyCounter)
+            switch (storeKeyCounter)
             {
                 case 0:
                     switch (itemKeyCounter)
                     {
                         case 0:
-                            if (lemonadeStand.money>=.86)
+                            if (lemonadeStand.money >= .86)
                             {
                                 inventory.cups += 25;
                                 lemonadeStand.money -= .86;
@@ -372,13 +372,13 @@ namespace lemonadeStand
                             {
                                 DisplayBrokePerson();
                             }
-                            
+
                             break;
                         case 1:
                             if (lemonadeStand.money >= 1.63)
                             {
                                 inventory.cups += 50;
-                            lemonadeStand.money-=1.63;
+                                lemonadeStand.money -= 1.63;
                             }
                             else
                             {
@@ -386,10 +386,10 @@ namespace lemonadeStand
                             }
                             break;
                         case 2:
-                            if (lemonadeStand.money >=2.75)
+                            if (lemonadeStand.money >= 2.75)
                             {
                                 inventory.cups += 100;
-                            lemonadeStand.money -= 2.75;
+                                lemonadeStand.money -= 2.75;
                             }
                             else
                             {
@@ -402,10 +402,10 @@ namespace lemonadeStand
                     switch (itemKeyCounter)
                     {
                         case 0:
-                             if (lemonadeStand.money>=.64)
+                            if (lemonadeStand.money >= .64)
                             {
-                            inventory.lemons += 10;
-                            lemonadeStand.money -= .64;
+                                inventory.lemons += 10;
+                                lemonadeStand.money -= .64;
                             }
                             else
                             {
@@ -413,10 +413,10 @@ namespace lemonadeStand
                             }
                             break;
                         case 1:
-                             if (lemonadeStand.money>=2.16)
+                            if (lemonadeStand.money >= 2.16)
                             {
-                            inventory.lemons += 30;
-                            lemonadeStand.money -= 2.16;
+                                inventory.lemons += 30;
+                                lemonadeStand.money -= 2.16;
                             }
                             else
                             {
@@ -424,10 +424,10 @@ namespace lemonadeStand
                             }
                             break;
                         case 2:
-                             if (lemonadeStand.money>=4.19)
+                            if (lemonadeStand.money >= 4.19)
                             {
-                            inventory.lemons += 75;
-                            lemonadeStand.money -= 4.19;
+                                inventory.lemons += 75;
+                                lemonadeStand.money -= 4.19;
                             }
                             else
                             {
@@ -440,10 +440,10 @@ namespace lemonadeStand
                     switch (itemKeyCounter)
                     {
                         case 0:
-                             if (lemonadeStand.money>=.51)
+                            if (lemonadeStand.money >= .51)
                             {
-                            inventory.sugar += 8;
-                            lemonadeStand.money -= .51;
+                                inventory.sugar += 8;
+                                lemonadeStand.money -= .51;
                             }
                             else
                             {
@@ -451,10 +451,10 @@ namespace lemonadeStand
                             }
                             break;
                         case 1:
-                             if (lemonadeStand.money>=1.63)
+                            if (lemonadeStand.money >= 1.63)
                             {
-                            inventory.sugar += 20;
-                            lemonadeStand.money -= 1.63;
+                                inventory.sugar += 20;
+                                lemonadeStand.money -= 1.63;
                             }
                             else
                             {
@@ -462,10 +462,10 @@ namespace lemonadeStand
                             }
                             break;
                         case 2:
-                             if (lemonadeStand.money>=3.28)
+                            if (lemonadeStand.money >= 3.28)
                             {
-                            inventory.sugar += 48;
-                            lemonadeStand.money -= 3.28;
+                                inventory.sugar += 48;
+                                lemonadeStand.money -= 3.28;
                             }
                             else
                             {
@@ -478,10 +478,10 @@ namespace lemonadeStand
                     switch (itemKeyCounter)
                     {
                         case 0:
-                             if (lemonadeStand.money>=.88)
+                            if (lemonadeStand.money >= .88)
                             {
-                            inventory.ice += 100;
-                            lemonadeStand.money -= .88;
+                                inventory.ice += 100;
+                                lemonadeStand.money -= .88;
                             }
                             else
                             {
@@ -489,10 +489,10 @@ namespace lemonadeStand
                             }
                             break;
                         case 1:
-                             if (lemonadeStand.money>=2.00)
+                            if (lemonadeStand.money >= 2.00)
                             {
-                            inventory.ice += 250;
-                            lemonadeStand.money -= 2.00;
+                                inventory.ice += 250;
+                                lemonadeStand.money -= 2.00;
                             }
                             else
                             {
@@ -500,10 +500,10 @@ namespace lemonadeStand
                             }
                             break;
                         case 2:
-                             if (lemonadeStand.money>=3.66)
+                            if (lemonadeStand.money >= 3.66)
                             {
-                            inventory.ice += 500;
-                            lemonadeStand.money -= 3.66;
+                                inventory.ice += 500;
+                                lemonadeStand.money -= 3.66;
                             }
                             else
                             {

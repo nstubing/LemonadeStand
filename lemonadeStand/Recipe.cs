@@ -8,9 +8,9 @@ namespace lemonadeStand
 {
     class Recipe
     {
-        public int lemonsToUse=4;
-        public int sugarToUse=4;
-        public int iceToUse=4;
+        public double lemonsToUse=4;
+        public double sugarToUse=4;
+        public double iceToUse=4;
         public double price=0.25;
 
         public Recipe()

@@ -12,7 +12,7 @@ namespace lemonadeStand
         Day day;
         Store store;
         public int currentDay;
-        public int daysPlaying;
+        public double daysPlaying;
 
 
         public Game()
@@ -23,7 +23,7 @@ namespace lemonadeStand
             store = new Store();
             day = new Day();
             currentDay = 1;
-            RunGameDays(lemonadeStandOne.inventory, lemonadeStandOne,store, day);
+            RunGameDays(lemonadeStandOne.inventory, lemonadeStandOne,store, day,currentDay);
         }
 
         private void DisplayRules()
@@ -35,7 +35,7 @@ namespace lemonadeStand
         }
         private void RunGameDays(Inventory inventory, LemonadeStand lemonadeStand,Store store, Day day,int currentDay)
         {
-            for(int i = 1; i <= daysPlaying; i++)
+            for(double i = 1; i <= daysPlaying; i++)
             {
                 this.currentDay += 1;
                 day.RunDay(inventory,lemonadeStand,store,day,currentDay);
