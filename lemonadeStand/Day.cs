@@ -11,8 +11,6 @@ namespace lemonadeStand
         public int lemonadeBought;
         public int possibleCustomers;
         public int payingCustomers;
-        public int popularityChange;
-        public int customerSatisfactionChange;
         Weather weather;
         Customers Customers;
 
@@ -23,18 +21,21 @@ namespace lemonadeStand
 
         }
 
-        public void RunDay(Inventory inventory, LemonadeStand lemonadeStand, Store store, Day day)
+        public void RunDay(Inventory inventory, LemonadeStand lemonadeStand, Store store, Day day,int currentDay)
         {
             weather = new Weather();
             store.DisplayStore(inventory, lemonadeStand, weather);
             lemonadeStand.SetRecipe();
             GetPossibleCustomers();
+            payingCustomers = 0;
             for(int j=0; j<possibleCustomers;j++)
             {
-                Customers = new Customers(weather.actualTemperature, weather.weatherCondition, lemonadeStand.popularity, lemonadeStand.recipe.price, day);
+                Customers = new Customers(weather.actualTemperature, weather.weatherCondition, lemonadeStand, day);
             }
-            Console.WriteLine(payingCustomers);
-            Console.ReadLine();
+            UpdatePopularity(lemonadeStand);
+            UpdateCustomerSatisfaction(lemonadeStand);
+            UpdateInventory(inventory)
+            DisplayDayResults()
 
 
         }
@@ -42,6 +43,21 @@ namespace lemonadeStand
         {
             Random rnd = new Random();
             possibleCustomers = rnd.Next(85, 120);
+        }
+        public void UpdatePopularity(LemonadeStand lemonadeStand)
+        {
+            lemonadeStand.popularity += (payingCustomers / 10);
+        }
+        public void UpdateCustomerSatisfaction(LemonadeStand lemonadeStand)
+        {
+            if(payingCustomers>lemonadeStand.customerSatisfaction)
+            {
+                lemonadeStand.customerSatisfaction += (payingCustomers / 3);
+            }
+            else
+            {
+                lemonadeStand.customerSatisfaction -= (payingCustomers / 3);
+            }
         }
     }
 }

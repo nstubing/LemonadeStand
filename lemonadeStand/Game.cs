@@ -11,6 +11,7 @@ namespace lemonadeStand
         LemonadeStand lemonadeStandOne;
         Day day;
         Store store;
+        public int currentDay;
         public int daysPlaying;
 
 
@@ -21,6 +22,7 @@ namespace lemonadeStand
             lemonadeStandOne = new LemonadeStand();
             store = new Store();
             day = new Day();
+            currentDay = 1;
             RunGameDays(lemonadeStandOne.inventory, lemonadeStandOne,store, day);
         }
 
@@ -31,11 +33,12 @@ namespace lemonadeStand
                 " At the end of the game, you'll see how much money you made, write it down and try to beat your score! Would you like to play 7,14, or 21 days? please type answer");
             daysPlaying = Int32.Parse(Console.ReadLine());
         }
-        private void RunGameDays(Inventory inventory, LemonadeStand lemonadeStand,Store store, Day day)
+        private void RunGameDays(Inventory inventory, LemonadeStand lemonadeStand,Store store, Day day,int currentDay)
         {
             for(int i = 1; i <= daysPlaying; i++)
             {
-                day.RunDay(inventory,lemonadeStand,store,day);
+                this.currentDay += 1;
+                day.RunDay(inventory,lemonadeStand,store,day,currentDay);
                 
             }
 
