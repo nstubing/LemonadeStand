@@ -12,6 +12,7 @@ namespace lemonadeStand
         public double payingCustomers;
         Weather weather;
         Customers Customers;
+        public double cupCounter;
 
 
         public Day()
@@ -25,6 +26,7 @@ namespace lemonadeStand
             store.DisplayStore(inventory, lemonadeStand, weather, currentDay);
             lemonadeStand.SetRecipe();
             GetPossibleCustomers();
+            this.cupCounter = inventory.cups;
             RunThroughCustomers(inventory, lemonadeStand, store, day, num);
             UpdateEndOfDayVariables(lemonadeStand);
             UpdatePopularity(lemonadeStand);
@@ -42,21 +44,20 @@ namespace lemonadeStand
         }
         public void UpdateCustomerSatisfaction(LemonadeStand lemonadeStand)
         {
-            if (payingCustomers > lemonadeStand.customerSatisfaction)
+            if ((lemonadeStand.customerSatisfaction + Math.Round((payingCustomers / 6)))<100)
             {
-                lemonadeStand.customerSatisfaction += Math.Round((payingCustomers / 3));
+                lemonadeStand.customerSatisfaction += Math.Round((payingCustomers / 6));
             }
             else
             {
-                lemonadeStand.customerSatisfaction -= Math.Round((payingCustomers / 3));
+                lemonadeStand.customerSatisfaction = 100;
             }
         }
 
         public void UpdateInventory(LemonadeStand lemonadeStand)
         {
-            lemonadeStand.inventory.cups -= 10;
-            lemonadeStand.inventory.lemons -= (10 * lemonadeStand.recipe.lemonsToUse);
-            lemonadeStand.inventory.sugar -= (10 * lemonadeStand.recipe.sugarToUse);
+            lemonadeStand.inventory.lemons -= lemonadeStand.recipe.lemonsToUse;
+            lemonadeStand.inventory.sugar -= lemonadeStand.recipe.sugarToUse;
         }
         public void DisplayDayResults(double actualTemperature, string weatherCondition, LemonadeStand lemonadeStand, double currentDay)
         {
@@ -84,6 +85,7 @@ namespace lemonadeStand
         }
         public void UpdateEndOfDayVariables(LemonadeStand lemonadeStand)
         {
+            lemonadeStand.inventory.cups = cupCounter;
             lemonadeStand.money += payingCustomers * lemonadeStand.recipe.price;
             lemonadeStand.inventory.ice = 0;
         }
@@ -92,13 +94,17 @@ namespace lemonadeStand
         {
             for (double j = 0; j < possibleCustomers; j++)
             {
-                if ((j == 0) || (payingCustomers % 10 == 0))
+                if (j==0 || payingCustomers==10 || payingCustomers==20 || payingCustomers==30 || payingCustomers==40 || payingCustomers==50 || payingCustomers==60 || payingCustomers==70 || payingCustomers==80 || payingCustomers==90 || payingCustomers==100 || payingCustomers==110)
                 {
                     UpdateInventory(lemonadeStand);
                 }
-                if ((inventory.cups > 9) && (inventory.lemons > lemonadeStand.recipe.lemonsToUse) && (inventory.sugar > lemonadeStand.recipe.sugarToUse) && (inventory.ice > lemonadeStand.recipe.iceToUse))
+                if (cupCounter > 0 && inventory.lemons > lemonadeStand.recipe.lemonsToUse && inventory.sugar > lemonadeStand.recipe.sugarToUse && inventory.ice > lemonadeStand.recipe.iceToUse)
                 {
                     Customers = new Customers(weather.actualTemperature, weather.weatherCondition, lemonadeStand, day, num);
+                }
+                else
+                {
+                    return;
                 }
 
             }

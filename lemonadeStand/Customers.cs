@@ -131,6 +131,7 @@ namespace lemonadeStand
             if (buyNumber < chanceToBuy)
             {
                 day.payingCustomers += 1;
+                day.cupCounter--;
             }
         }
     }

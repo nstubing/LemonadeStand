@@ -33,6 +33,22 @@ namespace lemonadeStand
                 "  Start with the basic recipe, but try to vary the recipe and see if you can do better!  Lastly, set your price and sell your lemonade at the stand. try changing up the price based on the weather conditions as well." + Environment.NewLine+
                 " At the end of the game, you'll see how much money you made, write it down and try to beat your score! Would you like to play 7,14, or 21 days? please type answer");
             daysPlaying = Int32.Parse(Console.ReadLine());
+            switch(daysPlaying)
+            {
+                case 7:
+                    return;
+                    break;
+                case 14:
+                    return;
+                    break;
+                case 21:
+                    return;
+                    break;
+                default:
+                    DisplayRules();
+                    break;
+
+            }
         }
         private void RunGameDays(Inventory inventory, LemonadeStand lemonadeStand,Store store, Day day,Random num)
         {
