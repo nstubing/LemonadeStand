@@ -23,7 +23,7 @@ namespace lemonadeStand
         public void GetTemperature()
         {
             Random rnd = new Random();
-            forcastTemperature = rnd.Next(50, 100);
+            forcastTemperature = rnd.Next(60, 95);
         }
         public void GetWeatherCondition()
         {
@@ -50,7 +50,7 @@ namespace lemonadeStand
         public void GetActualTemperature()
         {
             Random rnd = new Random();
-            actualTemperature = rnd.Next(forcastTemperature - 10, forcastTemperature + 10);
+            actualTemperature = rnd.Next(forcastTemperature - 5, forcastTemperature + 5);
         }
     }
 }

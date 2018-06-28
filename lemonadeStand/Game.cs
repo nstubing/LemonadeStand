@@ -17,13 +17,14 @@ namespace lemonadeStand
 
         public Game()
         {
+            Random num = new Random();
             DisplayRules();
             Console.Clear();
             lemonadeStandOne = new LemonadeStand();
             store = new Store();
             day = new Day();
             currentDay = 1;
-            RunGameDays(lemonadeStandOne.inventory, lemonadeStandOne,store, day,currentDay);
+            RunGameDays(lemonadeStandOne.inventory, lemonadeStandOne,store, day,num);
         }
 
         private void DisplayRules()
@@ -33,13 +34,14 @@ namespace lemonadeStand
                 " At the end of the game, you'll see how much money you made, write it down and try to beat your score! Would you like to play 7,14, or 21 days? please type answer");
             daysPlaying = Int32.Parse(Console.ReadLine());
         }
-        private void RunGameDays(Inventory inventory, LemonadeStand lemonadeStand,Store store, Day day,int currentDay)
+        private void RunGameDays(Inventory inventory, LemonadeStand lemonadeStand,Store store, Day day,Random num)
         {
             for(double i = 1; i <= daysPlaying; i++)
             {
+                day.payingCustomers = 0;
+                day.RunDay(inventory,lemonadeStand,store,day,currentDay,num);
                 this.currentDay += 1;
-                day.RunDay(inventory,lemonadeStand,store,day,currentDay);
-                
+
             }
 
         }

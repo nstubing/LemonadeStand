@@ -11,7 +11,7 @@ namespace lemonadeStand
         double chanceToBuy;
 
 
-        public Customers(double actualTemperature, string weatherCondition, LemonadeStand lemonadeStand, Day day)
+        public Customers(double actualTemperature, string weatherCondition, LemonadeStand lemonadeStand, Day day,Random num)
         {
             chanceToBuy = 10;
             ActualTemperatureInfluence(actualTemperature);
@@ -19,19 +19,19 @@ namespace lemonadeStand
             PopularityInfluence(lemonadeStand.popularity);
             PriceInfluence(lemonadeStand.recipe.price);
             RecipeInfluence(lemonadeStand);
-            DoesBuy(day);
+            DoesBuy(day,num);
 
         }
 
         public void ActualTemperatureInfluence(double temperature)
         {
-            if (temperature>=70)
+            if (temperature>=75)
             {
-                chanceToBuy += temperature - 70;
+                chanceToBuy += temperature - 77;
             }
             else
             {
-                chanceToBuy -= (70 - temperature) / 2;
+                chanceToBuy -= (75 - temperature) / 2;
             }
 
         }
@@ -125,9 +125,8 @@ namespace lemonadeStand
 
         }
 
-        public void DoesBuy(Day day)
+        public void DoesBuy(Day day, Random num)
         {
-            Random num = new Random();
             double buyNumber = num.Next(0, 101);
             if (buyNumber < chanceToBuy)
             {
