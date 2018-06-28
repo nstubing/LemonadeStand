@@ -25,6 +25,7 @@ namespace lemonadeStand
             day = new Day();
             currentDay = 1;
             RunGameDays(lemonadeStandOne.inventory, lemonadeStandOne,store, day,num);
+            DisplayEndGame(lemonadeStandOne);
         }
 
         private void DisplayRules()
@@ -32,19 +33,20 @@ namespace lemonadeStand
             Console.WriteLine("Your goal is to make as much money as you can in 7, 14, or 21 days by selling lemonade at your lemonade stand. Buy cups, lemons, sugar, and ice cubes, then set your recipe based on the weather and conditions." + Environment.NewLine +
                 "  Start with the basic recipe, but try to vary the recipe and see if you can do better!  Lastly, set your price and sell your lemonade at the stand. try changing up the price based on the weather conditions as well." + Environment.NewLine+
                 " At the end of the game, you'll see how much money you made, write it down and try to beat your score! Would you like to play 7,14, or 21 days? please type answer");
+
             daysPlaying = Int32.Parse(Console.ReadLine());
             switch(daysPlaying)
-            {
-                case 7:
-                    return;
+             {
+                case 1:
                     break;
-                case 14:
-                    return;
+                 case 7:
                     break;
-                case 21:
-                    return;
+                 case 14:
                     break;
-                default:
+                 case 21:
+                    break;
+                 default:
+                    Console.Clear();
                     DisplayRules();
                     break;
 
@@ -62,7 +64,11 @@ namespace lemonadeStand
 
         }
 
+        public void DisplayEndGame(LemonadeStand lemonadeStand)
+        {
+            Console.WriteLine("You made it to day "+daysPlaying+ " and you made $"+lemonadeStand.money+"!");
 
+        }
 
 
 

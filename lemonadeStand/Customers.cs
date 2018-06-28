@@ -132,6 +132,7 @@ namespace lemonadeStand
             {
                 day.payingCustomers += 1;
                 day.cupCounter--;
+                day.pitcher++;
             }
         }
     }

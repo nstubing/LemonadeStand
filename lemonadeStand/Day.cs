@@ -13,6 +13,7 @@ namespace lemonadeStand
         Weather weather;
         Customers Customers;
         public double cupCounter;
+        public int pitcher;
 
 
         public Day()
@@ -94,9 +95,10 @@ namespace lemonadeStand
         {
             for (double j = 0; j < possibleCustomers; j++)
             {
-                if (j==0 || payingCustomers==10 || payingCustomers==20 || payingCustomers==30 || payingCustomers==40 || payingCustomers==50 || payingCustomers==60 || payingCustomers==70 || payingCustomers==80 || payingCustomers==90 || payingCustomers==100 || payingCustomers==110)
+                if (j==0 || pitcher==10 ||pitcher ==21 || pitcher==32 || pitcher==43 || pitcher==54 || pitcher == 65 || pitcher == 76 || pitcher==87 || pitcher==98 ||pitcher==109)
                 {
                     UpdateInventory(lemonadeStand);
+                    pitcher++;
                 }
                 if (cupCounter > 0 && inventory.lemons > lemonadeStand.recipe.lemonsToUse && inventory.sugar > lemonadeStand.recipe.sugarToUse && inventory.ice > lemonadeStand.recipe.iceToUse)
                 {
