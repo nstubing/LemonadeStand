@@ -39,22 +39,22 @@ namespace lemonadeStand
             {
                 case "lemons":
                     Console.WriteLine("What would you like to set the new amount of lemons to? Input a number.");
-                    recipe.lemonsToUse = Int32.Parse(Console.ReadLine());
+                    bool lemonsNumber= double.TryParse(Console.ReadLine(), out recipe.lemonsToUse);
                     SetRecipe();
                     break;
                 case "sugar":
                     Console.WriteLine("What would you like to set the new amount of Sugar to? Input a number.");
-                    recipe.sugarToUse = Int32.Parse(Console.ReadLine());
+                     bool sugarNumber= double.TryParse(Console.ReadLine(), out recipe.sugarToUse);
                     SetRecipe();
                     break;
                 case "ice":
                     Console.WriteLine("What would you like to set the new amount of ice to? Input a number.");
-                    recipe.iceToUse = Int32.Parse(Console.ReadLine());
+                    bool iceNUmber= double.TryParse(Console.ReadLine(), out recipe.iceToUse);
                     SetRecipe();
                     break;
                 case "price":
                     Console.WriteLine("What would you like to set the price to? example '0.28'");
-                    recipe.price = double.Parse(Console.ReadLine());
+                     bool priceNumber= double.TryParse(Console.ReadLine(), out recipe.price);
                     SetRecipe();
                     break;
                 case "exit":
