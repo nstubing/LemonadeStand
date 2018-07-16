@@ -1,0 +1,10 @@
+One of the places that I utilized th single use part of SOLID was in the display of the store items. I wanted to specifically talk about this 
+case because from the look of it, it is repetetive and from the amounts of lines it lookes like it does a lot. Each item and each items amounts 
+required a different case to be loaded after each click of the up or down arrow key. Looking back at it now, I should have split up the 
+methods that contain the display(Item)Highlight methods because they are doing too much, but the display item methods are doing one thing only and 
+doing it well.  Now that I have a little more experience with Interfaces I think that would have been the perfect way to make this UI
+quick, SOLID, and much much more concise so if I have a bit of free time in the future I am going to go back and try to streamline the process
+becuase interfaces seem to be extremely useful.  One spot where I used the O in SOLID well was when the player is picking how many days they 
+want to play and the daysPlaying member variable is set. The game class has the daysPlaying variable that is used in the RunGameDays method to run a new day however many times
+the playing wants.  This leaves the opportunity for extension open if I wanted to add the ability to play for 31 days or a year, and there is no need to change the
+RunGameDays method which makes it very SOLID.  It Runs the days of the game and it runs them well.

@@ -13,6 +13,7 @@ namespace lemonadeStand
         public double money;
         public double customerSatisfaction;
         public double popularity;
+        public double revenue;
         public Recipe recipe;
         // constructor
 

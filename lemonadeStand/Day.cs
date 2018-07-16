@@ -66,7 +66,7 @@ namespace lemonadeStand
             Console.WriteLine("");
             Console.WriteLine("You sold " + payingCustomers + " cups of lemonade to " + possibleCustomers + " possible customers!");
             Console.WriteLine("");
-            Console.WriteLine("You made $" + (payingCustomers * lemonadeStand.recipe.price) + " which brings your total to $" + lemonadeStand.money);
+            Console.WriteLine("You made $" + (payingCustomers * lemonadeStand.recipe.price) + " today!  Your total revenue is $"+lemonadeStand.revenue+".  Your total money is $" + lemonadeStand.money);
             Console.WriteLine("");
             Console.WriteLine("Your popularity is now at "+lemonadeStand.popularity+" and your customer satisfaction is at "+lemonadeStand.customerSatisfaction+"%!");
             Console.WriteLine("press enter to start your next day!");
@@ -89,6 +89,7 @@ namespace lemonadeStand
             lemonadeStand.inventory.cups = cupCounter;
             lemonadeStand.money += payingCustomers * lemonadeStand.recipe.price;
             lemonadeStand.inventory.ice = 0;
+            lemonadeStand.revenue += (payingCustomers * lemonadeStand.recipe.price);
         }
 
         public void RunThroughCustomers(Inventory inventory, LemonadeStand lemonadeStand, Store store, Day day, Random num)
